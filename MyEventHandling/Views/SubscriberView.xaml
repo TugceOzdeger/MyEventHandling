@@ -1,0 +1,27 @@
+﻿<Window x:Class="MyEventHandling.SubscriberView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Subscriber View" Height="200" Width="500"
+        DataContext="{StaticResource SubscriberViewModel}">
+    <!--RelativeSource={RelativeSource AncestorType={x:Type ListView }},-->
+    
+    <Grid>
+        <ListView x:Name="listView" ItemsSource="{Binding MessageList, 
+             Mode=TwoWay, 
+            UpdateSourceTrigger=PropertyChanged}"
+            SelectionMode="Single"
+            IsSynchronizedWithCurrentItem="True"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Message Id" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Message Text" DisplayMemberBinding="{Binding Text}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
